@@ -96,6 +96,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
@@ -138,6 +139,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.lowlatency.rec=false \
 	af.resampler.quality=4
 
+# Telephony Properties
+PRODUCT_PROPERTY_OVERRIDES += \
+	telephony.lteOnCdmaDevice=1 \
+	telephony.lte.cdma.device=1 \
+	telephony.lteOnGsmDevice=1 \
+	telephony.lte.gsm.device=1 \
+	ro.telephony.default_network=10 \
+	ro.ril.def.preferred.network=10 \
+	persist.radio.mode_pref_nv10=1 \
+	ril.subscription.types=NV,RUIM
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -204,7 +215,7 @@ PRODUCT_PACKAGES += \
 	libmmcamera_interface
 
 PRODUCT_PACKAGES += \
-        libmm-omxcore \
+	libmm-omxcore \
 	libdivxdrmdecrypt \
 	libOmxVdec \
 	libOmxVenc \
